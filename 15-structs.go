@@ -18,20 +18,36 @@ func main() {
 	cPtr1 := &Circle{0, 0, 10}
 
 	cPtr2 := new(Circle)
-	(*cPtr2).x = 0
-	(*cPtr2).y = 0
-	(*cPtr2).r = 10
+	cPtr2.x = 0
+	cPtr2.y = 0
+	cPtr2.r = 10
 
-	fmt.Println(c1.r, c2.r, c3.r, (*cPtr1).r, (*cPtr2).r)
-
+	fmt.Println(c1.r, c2.r, c3.r, cPtr1.r, cPtr2.r)
 	fmt.Println("The area of the circle is:", c1.area())
 
+	// passing a pointer to a struct
+	c1.doubleRadious()
+	fmt.Println("c1 radious is now", c1.r)
+
+	// interfaces
 	aCircle := Circle{r: 10, x: 0, y: 0}
 	aSquare := Square{l: 10}
 	aRectangle := Rectangle{w: 10, h: 20}
 	shapes := []Shape{aCircle, aSquare, aRectangle}
 	fmt.Println("Total area is:", totalArea(shapes))
 
+	// type assertions
+	var aShape Shape = Circle{x: 1, y: 1, r: 33}
+	var undelyingCirle Circle = aShape.(Circle)
+	fmt.Println("The underlying circle's radious is", undelyingCirle.r)
+
+	probablyACirlce, ok := aShape.(Circle)
+	if ok {
+		fmt.Println("It is a circle!")
+		fmt.Println("Its radious is", probablyACirlce.r)
+	} else {
+		fmt.Println("It may be a square...")
+	}
 }
 
 // Circle : abstraction of a circle
@@ -41,6 +57,10 @@ type Circle struct {
 	x float64
 	y float64
 	r float64
+}
+
+func (c *Circle) doubleRadious() {
+	c.r = 2 * c.r
 }
 
 // Square : a square struct
