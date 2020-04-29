@@ -7,7 +7,7 @@ This repository was created for the **Programming Languages Course** of the Mast
 
 Instructions on how to install and execute the files in this repository can be found on [The Go Programming Language Official Website](https://golang.org/dl/).
 
-Executing the code examples without any installation required is possible through the [Go Language Palyground](https://play.golang.org/) available online.
+Executing the code examples without any installation required is possible through the [Go Language Playground](https://play.golang.org/) available online.
 
 ## References
 
