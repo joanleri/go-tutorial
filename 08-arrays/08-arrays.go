@@ -6,14 +6,16 @@ func main() {
 
 	// creating array
 	var x [5]float64
-	x[4] = 50.1
+	fmt.Println(x) //  initialized with zero values
+	x[4] = 50.1    // accessing elements
 	fmt.Println(x)
+	fmt.Printf("%T\n", x)
 
 	// printing array's length
 	fmt.Println(len(x))
 
-	// for loop in arrays
-	x = [5]float64{10, 9, 8, 7, 6}
+	// iterating over an array
+	x = [5]float64{10, 9, 8, 7, 6} // type inference in arrays
 	var total float64 = 0
 	for i, value := range x {
 		fmt.Println("Adding the value number", i+1)
@@ -21,7 +23,7 @@ func main() {
 	}
 	fmt.Println(total / float64(len(x)))
 
-	// ignoring index
+	// ignoring index while iterating
 	total = 0
 	for _, value := range x {
 		total += value

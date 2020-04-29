@@ -9,6 +9,7 @@ func main() {
 		fmt.Println("Zero")
 	case 1:
 		fmt.Println("One")
+		// fallthrough
 	case 2:
 		fmt.Println("Two")
 	case 3:

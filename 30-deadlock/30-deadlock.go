@@ -6,30 +6,37 @@ import (
 	"time"
 )
 
-// AnInteger definition
-type AnInteger struct {
-	L     sync.Mutex
-	value int
+// Fork definition
+type Fork struct {
+	L sync.Mutex
+}
+
+// Philosopher definition
+type Philosopher struct {
+	name string
+}
+
+func (ph Philosopher) eat(fork1 *Fork, fork2 *Fork, wg *sync.WaitGroup) {
+	defer wg.Done()
+	fork1.L.Lock()
+	defer fork1.L.Unlock()
+	fmt.Println(ph.name, "has grabbed one fork!")
+
+	time.Sleep(time.Second * 2)
+	fork2.L.Lock()
+	defer fork2.L.Unlock()
+	fmt.Println(ph.name, "has grabbed another fork!")
+	fmt.Println(ph.name, "is done eating!")
 }
 
 func main() {
 	var wg sync.WaitGroup
+	var f1, f2 Fork
+	philosopher1 := Philosopher{"Plato"}
+	philosopher2 := Philosopher{"Aristotle"}
 
-	printSum := func(i1, i2 *AnInteger) {
-		defer wg.Done()
-		i1.L.Lock()
-		defer i1.L.Unlock()
-
-		time.Sleep(time.Second * 2)
-		i2.L.Lock()
-		defer i2.L.Unlock()
-
-		fmt.Printf("i1 + i2 = %v\n", i1.value+i2.value)
-	}
-
-	var a, b AnInteger
 	wg.Add(2)
-	go printSum(&a, &b)
-	go printSum(&b, &a)
+	go philosopher1.eat(&f1, &f2, &wg)
+	go philosopher2.eat(&f2, &f1, &wg)
 	wg.Wait()
 }

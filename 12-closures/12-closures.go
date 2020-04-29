@@ -15,6 +15,9 @@ func main() {
 
 	mapper(grades, func(x float64) float64 { return 0.5 * x })
 	fmt.Println(grades)
+
+	// mapper(grades, func(x int) int { return 0.5 * int(x) })
+	// fmt.Println(grades)
 }
 
 func sequenceGenerator(increment int) func() int {

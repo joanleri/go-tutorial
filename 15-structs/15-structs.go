@@ -44,9 +44,9 @@ func main() {
 	probablyACirlce, ok := aShape.(Circle)
 	if ok {
 		fmt.Println("It is a circle!")
-		fmt.Println("Its radious is", probablyACirlce.r)
+		fmt.Println("Its radius is", probablyACirlce.r)
 	} else {
-		fmt.Println("It may be a square...")
+		fmt.Println("It might be a square...")
 	}
 }
 
@@ -59,6 +59,10 @@ type Circle struct {
 	r float64
 }
 
+func (c Circle) area() float64 {
+	return math.Pi * c.r * c.r
+}
+
 func (c *Circle) doubleRadious() {
 	c.r = 2 * c.r
 }
@@ -68,27 +72,23 @@ type Square struct {
 	l float64
 }
 
+func (s Square) area() float64 {
+	return s.l * s.l
+}
+
 // Rectangle : a rectangle struct
 type Rectangle struct {
 	h float64
 	w float64
 }
 
+func (r Rectangle) area() float64 {
+	return r.h * r.w
+}
+
 // Shape : a shape interface
 type Shape interface {
 	area() float64
-}
-
-func (c Circle) area() float64 {
-	return math.Pi * c.r * c.r
-}
-
-func (s Square) area() float64 {
-	return s.l * s.l
-}
-
-func (r Rectangle) area() float64 {
-	return r.h * r.w
 }
 
 func totalArea(shapes []Shape) float64 {

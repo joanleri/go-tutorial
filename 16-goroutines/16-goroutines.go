@@ -15,8 +15,7 @@ func main() {
 		go f(i)
 	}
 
-	// amt := time.Duration(rand.Intn(100))
-	// time.Sleep(time.Microsecond * amt)
+	// time.Sleep(time.Microsecond * 100)
 	fmt.Println("Here we Go!")
 	var input string
 	fmt.Scanln(&input)

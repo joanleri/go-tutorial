@@ -11,8 +11,7 @@ func anotherPinger(c chan<- string, repetitions int) {
 
 func anotherPrinter(c chan string) {
 	defer fmt.Println("(Done printing!)")
-	message, ok := <-c
-	for ok {
+	for message, ok := <-c; ok; {
 		fmt.Print(message, " ")
 		message, ok = <-c
 	}

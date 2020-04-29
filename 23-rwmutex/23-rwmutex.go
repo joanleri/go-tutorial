@@ -7,9 +7,9 @@ import (
 )
 
 func increment(wg *sync.WaitGroup, lock *sync.RWMutex, countPtr *int) {
+	defer wg.Done()
 	lock.Lock()
 	defer lock.Unlock()
-	defer wg.Done()
 	fmt.Println("Getting lock for writing.")
 	*countPtr++
 	time.Sleep(time.Second * 5)
@@ -17,9 +17,9 @@ func increment(wg *sync.WaitGroup, lock *sync.RWMutex, countPtr *int) {
 }
 
 func read(wg *sync.WaitGroup, lock *sync.RWMutex, counterPtr *int, id int) {
+	defer wg.Done()
 	lock.RLock()
 	defer lock.RUnlock()
-	defer wg.Done()
 	fmt.Println("Process", id, "-", "reading counter: ", *counterPtr)
 	time.Sleep(time.Second * 1)
 	fmt.Println("Process", id, "-", "releasing lock for reading.")

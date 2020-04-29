@@ -14,7 +14,7 @@ func main() {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		fmt.Println("1st goroutine working very hard...")
+		fmt.Println("1st goroutine is working very hard...")
 		for i := 0; i < 100; i++ {
 			time.Sleep(time.Millisecond * 20)
 			counter1++
@@ -25,7 +25,7 @@ func main() {
 	wg.Add(1)
 	go func() {
 		defer wg.Done()
-		fmt.Println("2nd goroutine working very hard...")
+		fmt.Println("2nd goroutine is working very hard...")
 		for i := 0; i < 100; i++ {
 			counter2++
 		}
@@ -33,6 +33,6 @@ func main() {
 	}()
 
 	wg.Wait()
-	fmt.Println("All goroutines complete.")
+	fmt.Println("All goroutines finished.")
 	fmt.Println("Counter 1:", counter1, "Counter 2:", counter2)
 }
