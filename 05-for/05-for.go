@@ -9,9 +9,13 @@ func main() {
 	}
 
 	// while loop
-	i := 10
-	for i <= 80 {
+	for i := 0; i <= 80; {
 		fmt.Println(i)
 		i *= 2
+	}
+
+	// infinite while loop
+	for {
+		fmt.Println("Infinity")
 	}
 }
