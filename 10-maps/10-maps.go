@@ -12,7 +12,7 @@ func main() {
 	days["Wednesday"] = 3
 	days["Thursday"] = 4
 	days["Friday"] = 5
-	days["Satuday"] = 6
+	days["Saturday"] = 6
 	days["Sunday"] = 7
 
 	fmt.Println(len(days)) // is equal to 7
