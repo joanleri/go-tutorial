@@ -17,13 +17,16 @@ func printRandomInt(es *ExpensiveStruct) { fmt.Println(es.a) }
 func main() {
 
 	var wg sync.WaitGroup
+	var l sync.Mutex
 	var structsCreated int
 	const numberOfProcesses = 1000
 
 	myPool := &sync.Pool{
 		New: func() interface{} {
 			anExpensiveStruct := ExpensiveStruct{a: rand.Intn(1000)}
+			l.Lock()
 			structsCreated++
+			l.Unlock()
 			return anExpensiveStruct
 		},
 	}
