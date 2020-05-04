@@ -7,6 +7,7 @@ func main() {
 	// creting a map
 	var days map[string]int64
 	days = make(map[string]int64)
+	fmt.Printf("%T\n", days)
 	days["Monday"] = 1
 	days["Tuesday"] = 2
 	days["Wednesday"] = 3
@@ -15,16 +16,18 @@ func main() {
 	days["Saturday"] = 6
 	days["Sunday"] = 7
 
-	fmt.Println(len(days)) // is equal to 7
+	fmt.Println("length:", len(days)) // is equal to 7
 
 	// deletion
 	delete(days, "Monday")
-	fmt.Println(len(days)) // is equal to 6
+	fmt.Println("new length:", len(days)) // is equal to 6
 
 	// search confirmation
 	// common pattern
 	if dayNumber, ok := days["Monday"]; ok {
 		fmt.Println(dayNumber, ok)
+	} else {
+		fmt.Println("Monday is not part of the week...")
 	}
 
 	if dayNumber, ok := days["Tuesday"]; ok {

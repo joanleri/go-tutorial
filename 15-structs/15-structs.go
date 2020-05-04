@@ -6,30 +6,46 @@ import (
 )
 
 func main() {
+
+	fmt.Println("What is the type of a circle?")
 	var c1 Circle
+	fmt.Printf("%T\n", c1)
+
+	// Zero value
+	fmt.Println("\n\n\nZero value")
+	fmt.Println(c1)
 	c1.x = 0
 	c1.y = 0
 	c1.r = 10
 
+	// Type inference with named parameters
 	c2 := Circle{x: 0, y: 0, r: 10}
 
+	// Type inference without named parameters
 	c3 := Circle{0, 0, 10}
 
+	// Pointer to circle
 	cPtr1 := &Circle{0, 0, 10}
-
 	cPtr2 := new(Circle)
-	cPtr2.x = 0
+	cPtr2.x = 0 // (*cPtr2).x? or cPtr2->x?
 	cPtr2.y = 0
 	cPtr2.r = 10
 
+	// Note to self: Return to presentation!
+
+	fmt.Println("\n\n\n...")
 	fmt.Println(c1.r, c2.r, c3.r, cPtr1.r, cPtr2.r)
 	fmt.Println("The area of the circle is:", c1.area())
 
 	// passing a pointer to a struct
+	fmt.Println("\n\n\nMethods that modify a struct instance")
 	c1.doubleRadious()
 	fmt.Println("c1 radious is now", c1.r)
 
+	// Note to self: Return to presentation!
+
 	// interfaces
+	fmt.Println("\n\n\nA method using interfaces")
 	aCircle := Circle{r: 10, x: 0, y: 0}
 	aSquare := Square{l: 10}
 	aRectangle := Rectangle{w: 10, h: 20}
@@ -37,6 +53,7 @@ func main() {
 	fmt.Println("Total area is:", totalArea(shapes))
 
 	// type assertions
+	fmt.Println("\n\n\nType assertion")
 	var aShape Shape = Circle{x: 1, y: 1, r: 33}
 	var undelyingCirle Circle = aShape.(Circle)
 	fmt.Println("The underlying circle's radious is", undelyingCirle.r)

@@ -5,6 +5,7 @@ import "fmt"
 func main() {
 
 	sevenSequence := sequenceGenerator(7)
+	fmt.Printf("%T\n", sevenSequence)
 	fmt.Println(sevenSequence())
 	fmt.Println(sevenSequence())
 	fmt.Println(sevenSequence())
@@ -14,10 +15,15 @@ func main() {
 	fmt.Println(grades)
 
 	mapper(grades, func(x float64) float64 { return 0.5 * x })
+	// Is "grades" modified?
 	fmt.Println(grades)
 
 	// mapper(grades, func(x int) int { return 0.5 * int(x) })
 	// fmt.Println(grades)
+
+	// var zeroSequence func() int
+	// zeroSequence = func() int { return 0 }
+	// println(zeroSequence())
 }
 
 func sequenceGenerator(increment int) func() int {

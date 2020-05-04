@@ -6,11 +6,16 @@ func main() {
 	grades := []float64{10, 9, 8, 7, 6}
 	fmt.Println("Average:", average(grades))
 
+	// Question
+	// fmt.Println("\nWhat will happen?")
+	// fmt.Printf("%T\n", average)
+
 	minimum, maximum, average := testStatistics(grades)
 	fmt.Println("Min:", minimum, "Max:", maximum, "Average:", average)
 
 	fmt.Println("Average:", variadicAverage(10, 9, 8, 7, 6))
 	fmt.Println("Average:", variadicAverage(grades...))
+
 }
 
 func average(grades []float64) float64 {
@@ -36,7 +41,7 @@ func testStatistics(grades []float64) (min float64, max float64, average float64
 		total += value
 	}
 	average = total / float64(len(grades))
-	return
+	return // naked return
 }
 
 func variadicAverage(grades ...float64) float64 {

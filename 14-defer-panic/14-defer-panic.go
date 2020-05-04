@@ -5,6 +5,7 @@ import "fmt"
 func main() {
 	deferingFunction()
 
+	println("\n\n\n\n")
 	grades := []float64{}
 	panicAverage(grades)
 }

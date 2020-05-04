@@ -9,8 +9,9 @@ func main() {
 	fmt.Println("a:", a, "b:", b)
 
 	cPtr := new(int)
+	fmt.Println("c:", *cPtr)
 	*cPtr = 30
-	fmt.Println("C:", *cPtr)
+	fmt.Println("c:", *cPtr)
 }
 
 func swap(aPtr *int, bPtr *int) {
