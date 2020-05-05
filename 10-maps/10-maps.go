@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 
-	// creting a map
+	// creating a map
 	var days map[string]int64
 	days = make(map[string]int64)
 	fmt.Printf("%T\n", days)
